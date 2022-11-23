@@ -8,12 +8,12 @@ const Banner = () => {
     return (
         <div className="carousel w-full">
             <div id="slide1" className="carousel-item relative w-full">
-                <img src={book1} className="w-full" alt='' />
+                <img src={book1} className="w-full" alt='' srcSet='' />
                 <div className="absolute flex justify-between transform -translate-y-1/2 left-20 top-1/2">
-                    <h1 className='text-4xl text-white '>
+                    <h1 className='lg:text-4xl text-2xl text-white '>
                         Enjoy reading books <br />
                         by reseller program with<br />
-                        <span className='text-6xl text-pink-400 font-bold leading-relaxed'>Loving Book Store</span>
+                        <span className='lg:text-6xl text-3xl text-pink-400 font-bold lg:leading-relaxed leading-relaxed'>Lovin Book Store</span>
                     </h1>
                 </div>
                 <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
@@ -22,12 +22,12 @@ const Banner = () => {
                 </div>
             </div>
             <div id="slide2" className="carousel-item relative w-full">
-                <img src={book2} className="w-full" alt='' />
+                <img src={book2} className="w-full" alt='' srcSet='' />
                 <div className="absolute flex justify-between transform -translate-y-1/2 left-20 top-1/2">
-                    <h1 className='text-4xl text-white '>
+                    <h1 className='lg:text-4xl text-2xl text-white '>
                         Enjoy reading books <br />
                         by reseller program with<br />
-                        <span className='text-6xl text-pink-400 font-bold leading-relaxed'>Loving Book Store</span>
+                        <span className='lg:text-6xl text-3xl text-pink-400 font-bold lg:leading-relaxed leading-relaxed'>Lovin Book Store</span>
                     </h1>
                 </div>
                 <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
@@ -36,12 +36,12 @@ const Banner = () => {
                 </div>
             </div>
             <div id="slide3" className="carousel-item relative w-full">
-                <img src={book3} className="w-full" alt='' />
+                <img src={book3} className="w-full" alt='' srcSet='' />
                 <div className="absolute flex justify-between transform -translate-y-1/2 left-20 top-1/2">
-                    <h1 className='text-4xl text-white '>
+                    <h1 className='lg:text-4xl text-2xl text-white '>
                         Enjoy reading books <br />
                         by reseller program with<br />
-                        <span className='text-6xl text-pink-400 font-bold leading-relaxed'>Loving Book Store</span>
+                        <span className='lg:text-6xl text-3xl text-pink-400 font-bold lg:leading-relaxed leading-relaxed'>Lovin Book Store</span>
                     </h1>
                 </div>
                 <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
@@ -50,12 +50,12 @@ const Banner = () => {
                 </div>
             </div>
             <div id="slide4" className="carousel-item relative w-full">
-                <img src={book4} className="w-full" alt='' />
+                <img src={book4} className="w-full" alt='' srcSet='' />
                 <div className="absolute flex justify-between transform -translate-y-1/2 left-20 top-1/2">
-                    <h1 className='text-4xl text-white '>
+                    <h1 className='lg:text-4xl text-2xl text-white '>
                         Enjoy reading books <br />
                         by reseller program with<br />
-                        <span className='text-6xl text-pink-400 font-bold leading-relaxed'>Loving Book Store</span>
+                        <span className='lg:text-6xl text-3xl text-pink-400 font-bold lg:leading-relaxed leading-relaxed'>Lovin Book Store</span>
                     </h1>
                 </div>
                 <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">

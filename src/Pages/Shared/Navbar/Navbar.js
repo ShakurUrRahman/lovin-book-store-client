@@ -19,12 +19,12 @@ const Navbar = () => {
                 <li><Link to="/dashboard">Dashboard</Link></li>
                 <li className='flex items-center p-2 font-bold'>{user.displayName}</li>
                 <div className='flex items-center'>
-                    <button className='btn btn-sm px-8 border-0 rounded-0 bg-pink-400' onClick={handleLogOut}><span className='text-black'>Logout</span></button>
+                    <button className='btn btn-sm px-8 border-0 rounded-0 bg-pink-400 hover:bg-violet-600' onClick={handleLogOut}><span className='text-black'>Logout</span></button>
                 </div>
             </>
             :
             <div className='flex items-center'>
-                <button className='btn btn-sm px-8 border-0 rounded-0 bg-pink-400'><Link to='/login'><span className='text-black'>Login</span></Link></button>
+                <button className='btn btn-sm px-8 border-0 rounded-0 bg-pink-400 hover:bg-violet-600'><Link to='/login'><span className='text-black'>Login</span></Link></button>
             </div>
         }
     </>
@@ -42,7 +42,7 @@ const Navbar = () => {
                 </div>
                 <Link to='/' className="btn btn-ghost normal-case text-xl">
                     <div className='flex items-center gap-3'>
-                        <img className='h-12 w-30' src={logo} alt="" srcset="" /><span className='text-3xl text-pink-400'>Lovin Book Store</span>
+                        <img className='h-12 w-30' src={logo} alt="" srcSet='' /><span className='text-3xl text-pink-400'>Lovin Book Store</span>
                     </div>
                 </Link>
             </div>
