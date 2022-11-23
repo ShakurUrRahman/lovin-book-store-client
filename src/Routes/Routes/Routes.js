@@ -1,4 +1,5 @@
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
+import Home from "../../Pages/Home/Home/Home";
 import Signup from "../../Pages/Signup/Signup";
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -12,6 +13,10 @@ const router = createBrowserRouter([
         errorPage: <ErrorPage></ErrorPage>,
         element: <Main></Main>,
         children: [
+            {
+                path: '/',
+                element: <Home></Home>
+            },
             {
                 path: '/login',
                 element: <Login></Login>
