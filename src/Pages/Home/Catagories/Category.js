@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import BookingModal from './BookingModal';
 
 const Category = ({ category }) => {
     const { picture, name, description, _id } = category;
@@ -15,6 +16,7 @@ const Category = ({ category }) => {
                     <button className='btn btn-sm px-8 border-0 rounded-0 bg-pink-400 hover:bg-violet-600'><Link to={`/categoryDetails/${_id}`}><span className='text-black'>See this categories books</span></Link></button>
                 </div>
             </div>
+
         </div>
     );
 };

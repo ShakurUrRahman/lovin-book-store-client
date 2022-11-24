@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import BookingModal from './BookingModal';
 import Category from './Category';
 
 

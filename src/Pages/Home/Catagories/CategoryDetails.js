@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../../context/AuthProvider';
+import BookingModal from './BookingModal';
+import BookingModal2 from './BookingModal2';
 
 const CategoryDetails = () => {
     const categoryDetails = useLoaderData();
+    const user = useContext(AuthContext);
+
+    const [getBook, setGetBook] = useState(null);
+
     console.log(categoryDetails);
     const { firstBook, secondBook } = categoryDetails;
     return (
@@ -20,8 +27,8 @@ const CategoryDetails = () => {
                     <p><small>Original Price: {firstBook.originalPrice}</small></p>
                     <p>Using Period: {firstBook.usesTime}</p>
                     <h2 className='text-xl'>Seller Name: {firstBook.sellerName}</h2>
-                    <div className="card-actions">
-                        <button className="btn btn-primary">Book Now</button>
+                    <div className="card-actions ">
+                        <label htmlFor="booking-modal" className="btn btn-sm bg-pink-400 hover:bg-violet-600 text-black mt-5 mx-auto">Book Now</label>
                     </div>
                 </div>
             </div>
@@ -33,15 +40,27 @@ const CategoryDetails = () => {
                     <h2 className="card-title">{secondBook.name}</h2>
                     <p>by <span className='font-bold'>{secondBook.writer}</span></p>
                     <p>Location: {secondBook.location}</p>
-                    <p><small>Present Price: {secondBook.resellPrice}</small></p>
-                    <p><small>Original Price: {secondBook.originalPrice}</small></p>
+                    <p><small>Present Price: {secondBook.resellPrice}TK</small></p>
+                    <p><small>Original Price: {secondBook.originalPrice}TK</small></p>
                     <p>Using Period: {secondBook.usesTime}</p>
                     <h2 className='text-xl'>Seller Name: {secondBook.sellerName}</h2>
                     <div className="card-actions">
-                        <button className="btn btn-primary">Book Now</button>
+                        <label htmlFor="booking-modal2" className="btn btn-sm bg-pink-400 hover:bg-violet-600 text-black mt-5 mx-auto border-0 rounded-0">Book Now</label>
                     </div>
                 </div>
             </div>
+            {categoryDetails &&
+                <BookingModal
+                    user={user}
+                    categoryDetails={categoryDetails}
+                ></BookingModal>
+            }
+            {categoryDetails &&
+                <BookingModal2
+                    user={user}
+                    categoryDetails={categoryDetails}
+                ></BookingModal2>
+            }
         </div>
     );
 };
