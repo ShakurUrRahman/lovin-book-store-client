@@ -1,4 +1,5 @@
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
+import CategoryDetails from "../../Pages/Home/Catagories/CategoryDetails";
 import Home from "../../Pages/Home/Home/Home";
 import Signup from "../../Pages/Signup/Signup";
 
@@ -24,7 +25,13 @@ const router = createBrowserRouter([
             {
                 path: '/signup',
                 element: <Signup></Signup>
+            },
+            {
+                path: '/categoryDetails/:id',
+                loader: ({ params }) => fetch(`http://localhost:5000/categoryDetails/${params.id}`),
+                element: <CategoryDetails></CategoryDetails>
             }
+
         ]
     },
     {

@@ -1,28 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Category from './Category';
 
-const features = [
-    {
-        name: 'Skill developing books',
-        description:
-            'Skill development encompasses several vital attributes, including identifying ones skill gaps and enabling one to develop those skills to achieve their goal. In other words, it refers to systematic and sustained efforts towards improving ones ability to perform job-related activities.',
-        picture: 'https://i.ibb.co/xCNXzGp/people-book-pile-students-climbing-books-business-success-education-level-staff-skill-development-le.webp'
-    },
-    {
-        name: 'Motivational Books',
-        description:
-            'Possible criteria that have been suggested as categorizing a book as inspirational fiction include novels whose main purpose is depict an example of change in the life of a major characters in order to inspire readers to make such changes in their own life.',
-        picture: 'https://i.ibb.co/5krF4Mn/motivational-books.webp'
-    },
-    {
-        name: 'Fiction Books',
-        description:
-            'Fiction refers to literature created from the imagination. Mysteries, science fiction, romance, fantasy, chick lit, crime thrillers are all fiction genres. Fiction texts are created from the imagination and include made-up stories with characters, a setting and plot from the authors own imagination.',
-        picture: 'https://i.ibb.co/VW3ydxf/Old-Bookcase.jpg'
-    },
-]
 
 const Catagories = () => {
+
+    const [categories, setCategories] = useState([]);
+    useEffect(() => {
+        fetch('http://localhost:5000/')
+            .then(res => res.json())
+            .then(data => setCategories(data))
+    }, [])
+
     return (
         <div className="my-20">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -35,10 +23,10 @@ const Catagories = () => {
 
                 <div className="mt-20 max-w-lg sm:mx-auto md:max-w-none ">
                     <div className="grid grid-cols-1 gap-y-16 md:grid-cols-3 md:gap-x-12 md:gap-y-16 ">
-                        {features.map(feature => (
+                        {categories.map(category => (
                             <Category
-                                key={feature.name}
-                                feature={feature}
+                                key={category.id}
+                                category={category}
                             ></Category>
                         ))}
                     </div>

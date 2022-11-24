@@ -1,0 +1,70 @@
+[
+    {
+        "name": "Skill developing books",
+        "description": "Skill development encompasses several vital attributes, including identifying ones skill gaps and enabling one to develop those skills to achieve their goal. In other words, it refers to systematic and sustained efforts towards improving ones ability to perform job-related activities.",
+        "picture": "https://i.ibb.co/xCNXzGp/people-book-pile-students-climbing-books-business-success-education-level-staff-skill-development-le.webp",
+        "firstBook": {
+            "name": "Innovations and Technologies for Soft Skill Development and Learning",
+            "writer": "Suresh Kumar",
+            "image": "https://i.ibb.co/TWx0Bgm/skill-book1.png",
+            "location": "Magura",
+            "resellPrice": "15,500",
+            "originalPrice": "19,775",
+            "sellerName": "Abdul Hakim"
+        },
+        "secondBook": {
+            "name": "Novice to Expert",
+            "writer": "S.J. Scott",
+            "image": "https://i.ibb.co/VJbTbY0/skill-book2.jpg",
+            "location": "Hobiganj",
+            "resellPrice": "1,100",
+            "originalPrice": "1,750",
+            "sellerName": "Zihan Mubarak"
+        }
+    },
+    {
+        "name": "Motivational Books",
+        "description": "Possible criteria that have been suggested as categorizing a book as inspirational fiction include novels whose main purpose is depict an example of change in the life of a major characters in order to inspire readers to make such changes in their own life.",
+        "picture": "https://i.ibb.co/5krF4Mn/motivational-books.webp",
+        "firstBook": {
+            "name": "The power of positive thinking",
+            "writer": "Norman Vincent peale",
+            "image": "https://i.ibb.co/LC3HbKq/motivationan-book1.jpg",
+            "location": "Pabna",
+            "resellPrice": "400",
+            "originalPrice": "730",
+            "sellerName": "Azad Rahman"
+        },
+        "secondBook": {
+            "name": "The road to Mecca",
+            "image": "https://i.ibb.co/DKJppy3/motivationan-book2.jpg",
+            "location": "Bhola",
+            "resellPrice": "1,500",
+            "originalPrice": "2,100",
+            "sellerName": "Javed Karim"
+        }
+    },
+    {
+        "name": "Fiction Books",
+        "description": "Fiction refers to literature created from the imagination. Mysteries, science fiction, romance, fantasy, chick lit, crime thrillers are all fiction genres. Fiction texts are created from the imagination and include made-up stories with characters, a setting and plot from the authors own imagination.",
+        "picture": "https://i.ibb.co/VW3ydxf/Old-Bookcase.jpg",
+        "firstBook": {
+            "name": "Sophie's World",
+            "writer": "Jostein Gaarder",
+            "image": "https://i.ibb.co/f0V6Fth/fiction-book1.jpg",
+            "location": "Dhaka",
+            "resellPrice": "800",
+            "originalPrice": "1,200",
+            "sellerName": "Jibon Ahmed"
+        },
+        "secondBook": {
+            "name": "Quo Vadis",
+            "writer": "Henryk Sienkiewicz",
+            "image": "https://i.ibb.co/qxzPMKz/fiction-book2.jpg",
+            "location": "Mymensingh",
+            "resellPrice": "1,300",
+            "originalPrice": "1,910",
+            "sellerName": "Faruk Hossen"
+        }
+    }
+]

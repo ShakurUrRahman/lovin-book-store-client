@@ -42,7 +42,7 @@ const Navbar = () => {
                 </div>
                 <Link to='/' className="btn btn-ghost normal-case text-xl">
                     <div className='flex items-center gap-3'>
-                        <img className='h-12 w-30' src={logo} alt="" srcSet='' /><span className='text-3xl text-pink-400'>Lovin Book Store</span>
+                        <img className='h-12 w-30' src={logo} alt="" srcSet='' /><span className='text-3xl text-pink-400 font-bold'>Lovin Book Store</span>
                     </div>
                 </Link>
             </div>
