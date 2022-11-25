@@ -13,14 +13,18 @@ const BookingModal2 = ({ categoryDetails, user }) => {
         const resellPrice = form.resellPrice.value;
         const phoneNumber = form.phoneNumber.value;
         const meetingLocation = form.meetingLocation.value;
+        const image = form.image.value;
+        const writerName = form.writerName.value;
 
         const booking = {
             name,
             email,
             bookName,
+            writerName,
             resellPrice,
             phoneNumber,
-            meetingLocation
+            meetingLocation,
+            image
         }
 
 
@@ -49,9 +53,11 @@ const BookingModal2 = ({ categoryDetails, user }) => {
                         <input name="name" type="text" value={user.user?.displayName} disabled className="input input-bordered w-full" />
                         <input name="email" type="text" value={user.user?.email} disabled className="input input-bordered w-full" />
                         <input name="bookName" type="text" value={secondBook.name} disabled className="input input-bordered w-full" />
+                        <input name="writerName" type="text" value={secondBook.writer} disabled className="input input-bordered w-full" />
                         <input name='resellPrice' type="text" value={secondBook.resellPrice} disabled className="input input-bordered w-full" />
                         <input name='phoneNumber' type="text" placeholder="Phone Number" className="input input-bordered w-full" />
                         <input name='meetingLocation' type="text" placeholder="Meeting Location" className="input input-bordered w-full" />
+                        <input name='image' type="text" className="input input-bordered w-full" value={secondBook.image} disabled />
                         <br />
                         <input className='btn btn-sm bg-pink-400 hover:bg-violet-600 w-full' type="submit" value="Book Now" />
                     </form>

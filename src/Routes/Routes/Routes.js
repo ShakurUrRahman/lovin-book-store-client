@@ -1,5 +1,6 @@
 import DashboardLayout from "../../Layout/DashboardLayout";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
+import MyBookings from "../../Pages/Dashboard/MyBookings/MyBookings";
 import CategoryDetails from "../../Pages/Home/Catagories/CategoryDetails";
 import Home from "../../Pages/Home/Home/Home";
 import Signup from "../../Pages/Signup/Signup";
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/dashboard',
-                element: <Dashboard></Dashboard>
+                element: <MyBookings></MyBookings>
             }
         ]
     }

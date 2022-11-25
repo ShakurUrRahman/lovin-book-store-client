@@ -28,13 +28,13 @@ const Signup = () => {
                 }
                 updateUser(userInfo)
                     .then(() => {
-                        navigate('/');
                         setUser({ ...user, ...userInfo })
+                        saveBuyer(data.name, data.email, data.role);
                     })
                     .catch(err => console.log(err))
             })
             .catch(error => {
-                console.log(error)
+                console.log('save buyer', error)
                 setSignUpError(error.message)
             })
     }
@@ -48,6 +48,22 @@ const Signup = () => {
                 console.log(user);
             })
             .catch(error => console.error(error))
+    }
+
+    const saveBuyer = (name, email, role) => {
+        const buyer = { name, email, role }
+        fetch('http://localhost:5000/buyers', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(buyer)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                navigate('/');
+            })
     }
 
     return (
@@ -80,7 +96,7 @@ const Signup = () => {
                     </div>
                     <select className="select select-bordered select-sm w-full max-w-xs mt-2" {...register('role')}>
                         <option value="Buyer">Buyer</option>
-                        <option value="User">User</option>
+                        <option value="Seller">Seller</option>
                     </select>
                     <input className='btn w-full mt-5' value='Sign Up' type="submit" />
                     {signUpError && <p className='text-red-500'>{signUpError}</p>}
