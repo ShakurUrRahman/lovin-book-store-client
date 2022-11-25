@@ -1,8 +1,9 @@
 import React from 'react';
+import toast from 'react-hot-toast';
 
 const BookingModal = ({ categoryDetails, user }) => {
     const { firstBook } = categoryDetails;
-
+    console.log(user);
     const handleBookingOne = event => {
         event.preventDefault();
         const form = event.target;
@@ -12,7 +13,7 @@ const BookingModal = ({ categoryDetails, user }) => {
         const resellPrice = form.resellPrice.value;
         const phoneNumber = form.phoneNumber.value;
         const meetingLocation = form.meetingLocation.value;
-
+        console.log(user);
         const booking = {
             name,
             email,
@@ -21,7 +22,20 @@ const BookingModal = ({ categoryDetails, user }) => {
             phoneNumber,
             meetingLocation
         }
-        console.log(booking);
+
+        fetch('http://localhost:5000/bookings', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(booking)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                toast.success('Booking Confirmed')
+
+            })
     }
 
     return (
@@ -34,12 +48,14 @@ const BookingModal = ({ categoryDetails, user }) => {
                     <form onSubmit={handleBookingOne} className='grid grid-cols-1 gap-2 mt-5'>
                         <input name="name" type="text" value={user.user?.displayName} disabled className="input input-bordered w-full" />
                         <input name="email" type="text" value={user.user?.email} disabled className="input input-bordered w-full" />
+                        <input type="text" />
                         <input name="bookName" type="text" value={firstBook.name} disabled className="input input-bordered w-full" />
                         <input name='resellPrice' type="text" value={firstBook.resellPrice} disabled className="input input-bordered w-full" />
                         <input name='phoneNumber' type="text" placeholder="Phone Number" className="input input-bordered w-full" />
                         <input name='meetingLocation' type="text" placeholder="Meeting Location" className="input input-bordered w-full" />
                         <br />
-                        <input className='btn btn-sm bg-pink-400 hover:bg-violet-600 w-full' type="submit" value="Book Now" />
+                        {/* <input className='btn btn-sm bg-pink-400 hover:bg-violet-600 w-full' type="submit" value="Book Now" /> */}
+                        <input htmlFor="booking-modal" type="submit" className="btn btn-sm bg-pink-400 hover:bg-violet-600 w-full" value="Book Now" />
                     </form>
                 </div>
             </div>

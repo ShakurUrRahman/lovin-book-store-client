@@ -1,4 +1,5 @@
 import React from 'react';
+import toast from 'react-hot-toast';
 
 const BookingModal2 = ({ categoryDetails, user }) => {
     const { secondBook } = categoryDetails;
@@ -13,7 +14,28 @@ const BookingModal2 = ({ categoryDetails, user }) => {
         const phoneNumber = form.phoneNumber.value;
         const meetingLocation = form.meetingLocation.value;
 
-        console.log(name, email, bookName, resellPrice, phoneNumber, meetingLocation);
+        const booking = {
+            name,
+            email,
+            bookName,
+            resellPrice,
+            phoneNumber,
+            meetingLocation
+        }
+
+
+        fetch('http://localhost:5000/bookings', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(booking)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                toast.success('Booking Confirmed')
+            })
     }
 
     return (

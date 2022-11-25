@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
 import BookingModal from './BookingModal';
@@ -44,6 +44,7 @@ const CategoryDetails = () => {
                     <p><small>Original Price: {secondBook.originalPrice}TK</small></p>
                     <p>Using Period: {secondBook.usesTime}</p>
                     <h2 className='text-xl'>Seller Name: {secondBook.sellerName}</h2>
+                    <p></p>
                     <div className="card-actions">
                         <label htmlFor="booking-modal2" className="btn btn-sm bg-pink-400 hover:bg-violet-600 text-black mt-5 mx-auto border-0 rounded-0">Book Now</label>
                     </div>
