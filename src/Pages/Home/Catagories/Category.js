@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import BookingModal from './BookingModal';
 
 const Category = ({ category }) => {
     const { picture, name, description, _id } = category;

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import BookingModal from './BookingModal';
 import Category from './Category';
 
 
@@ -26,7 +25,7 @@ const Catagories = () => {
                     <div className="grid grid-cols-1 gap-y-16 md:grid-cols-3 md:gap-x-12 md:gap-y-16 ">
                         {categories.map(category => (
                             <Category
-                                key={category.id}
+                                key={category._id}
                                 category={category}
                             ></Category>
                         ))}

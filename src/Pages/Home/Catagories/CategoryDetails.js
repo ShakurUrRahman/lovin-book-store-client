@@ -8,8 +8,6 @@ const CategoryDetails = () => {
     const categoryDetails = useLoaderData();
     const user = useContext(AuthContext);
 
-    const [getBook, setGetBook] = useState(null);
-
     console.log(categoryDetails);
     const { firstBook, secondBook } = categoryDetails;
     return (
@@ -28,7 +26,9 @@ const CategoryDetails = () => {
                     <p>Using Period: {firstBook.usesTime}</p>
                     <h2 className='text-xl'>Seller Name: {firstBook.sellerName}</h2>
                     <div className="card-actions ">
-                        <label htmlFor="booking-modal" className="btn btn-sm bg-pink-400 hover:bg-violet-600 text-black mt-5 mx-auto">Book Now</label>
+                        <label
+                            htmlFor="booking-modal"
+                            className="btn btn-sm bg-pink-400 hover:bg-violet-600 text-black mt-5 mx-auto">Book Now</label>
                     </div>
                 </div>
             </div>
