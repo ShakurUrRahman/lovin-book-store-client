@@ -1,23 +1,37 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../context/AuthProvider';
 import { useQuery } from '@tanstack/react-query'
+import Loading from '../../Shared/Loading/Loading';
 
 const MyBookings = () => {
-    const { user } = useContext(AuthContext);
+    const { user, loading } = useContext(AuthContext);
+
 
     const url = `http://localhost:5000/bookings?email=${user?.email}`
+
 
     const { data: bookings = [] } = useQuery({
         queryKey: ['bookings', user?.email],
         queryFn: async () => {
-            const res = await fetch(url);
+
+            const res = await fetch(url, {
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                }
+            });
             const data = await res.json();
+
             return data;
+
         }
     });
 
+
     return (
         <div>
+            <div>
+                <h2 className='font-bold text-3xl text-pink-400 text-center my-5'>My All Bookings</h2>
+            </div>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
                     <thead>
@@ -30,7 +44,7 @@ const MyBookings = () => {
                     </thead>
                     <tbody>
                         {
-                            bookings.map((booking, i) => <tr key={booking._id}>
+                            bookings?.map((booking, i) => <tr key={booking._id}>
                                 <th>
                                     {i + 1}
                                 </th>
@@ -43,7 +57,7 @@ const MyBookings = () => {
                                         </div>
                                         <div>
                                             <div className="font-bold"> {booking.bookName}</div>
-                                            <div className="text-sm opacity-50">{booking.writerName}</div>
+                                            <div className="text-sm opacity-50">by {booking.writerName}</div>
                                         </div>
                                     </div>
                                 </td>

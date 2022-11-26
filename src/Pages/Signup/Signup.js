@@ -5,14 +5,21 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import { FaGoogle } from 'react-icons/fa';
 import { GoogleAuthProvider } from 'firebase/auth';
+import useToken from '../../Hooks/useToken';
 
 
 const Signup = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { createUser, updateUser, setUser, googleSignIn } = useContext(AuthContext);
+    const { createUser, updateUser, setUser, googleSignIn, loading } = useContext(AuthContext);
     const [signUpError, setSignUpError] = useState('');
     const navigate = useNavigate();
+    const [createdUserEmail, setCreatedUserEmail] = useState('');
+    const [token] = useToken(createdUserEmail);
+
+    if (token) {
+        navigate('/');
+    }
 
     const handleSignup = (data) => {
         console.log(data);
@@ -61,10 +68,10 @@ const Signup = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
-                navigate('/');
+                setCreatedUserEmail(email)
             })
     }
+
 
     return (
         <div className='h-full flex justify-center items-center'>
@@ -98,7 +105,7 @@ const Signup = () => {
                         <option value="Buyer">Buyer</option>
                         <option value="Seller">Seller</option>
                     </select>
-                    <input className='btn w-full mt-5' value='Sign Up' type="submit" />
+                    <input className='btn w-full mt-5' value='Sign Up' type="submit" disabled={loading} />
                     {signUpError && <p className='text-red-500'>{signUpError}</p>}
                 </form>
                 <p>Already have an account? <Link to='/login' className='text-green-500'>Please log in</Link></p>

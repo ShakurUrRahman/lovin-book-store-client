@@ -1,7 +1,7 @@
 import React from 'react';
 import toast from 'react-hot-toast';
 
-const BookingModal2 = ({ categoryDetails, user }) => {
+const BookingModal2 = ({ categoryDetails, user, setModalData }) => {
     const { secondBook } = categoryDetails;
 
     const handleBookingTwo = event => {
@@ -38,6 +38,7 @@ const BookingModal2 = ({ categoryDetails, user }) => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
+                setModalData(null);
                 toast.success('Booking Confirmed')
             })
     }

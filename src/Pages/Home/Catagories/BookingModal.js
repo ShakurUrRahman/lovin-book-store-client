@@ -1,7 +1,7 @@
 import React from 'react';
 import toast from 'react-hot-toast';
 
-const BookingModal = ({ categoryDetails, user }) => {
+const BookingModal = ({ categoryDetails, user, setModalData }) => {
     const { firstBook } = categoryDetails;
     console.log(user);
     const handleBookingOne = event => {
@@ -37,9 +37,11 @@ const BookingModal = ({ categoryDetails, user }) => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
+                setModalData(null);
                 toast.success('Booking Confirmed')
 
             })
+
     }
 
     return (
@@ -60,7 +62,6 @@ const BookingModal = ({ categoryDetails, user }) => {
                         <input name='meetingLocation' type="text" placeholder="Meeting Location" className="input input-bordered w-full" />
                         <input name='image' type="text" className="input input-bordered w-full" value={firstBook.image} disabled />
                         <br />
-                        {/* <input className='btn btn-sm bg-pink-400 hover:bg-violet-600 w-full' type="submit" value="Book Now" /> */}
                         <input htmlFor="booking-modal" type="submit" className="btn btn-sm bg-pink-400 hover:bg-violet-600 w-full" value="Book Now" />
                     </form>
                 </div>

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
 import BookingModal from './BookingModal';
@@ -7,9 +7,11 @@ import BookingModal2 from './BookingModal2';
 const CategoryDetails = () => {
     const categoryDetails = useLoaderData();
     const user = useContext(AuthContext);
+    const [modalData, setModalData] = useState(null);
 
     console.log(categoryDetails);
     const { firstBook, secondBook } = categoryDetails;
+
     return (
         <div className='grid grid-cols-1 gap-y-16 lg:grid-cols-2 
         lg:max-w-[830px] lg:mx-auto my-10'>
@@ -27,6 +29,7 @@ const CategoryDetails = () => {
                     <h2 className='text-xl'>Seller Name: {firstBook.sellerName}</h2>
                     <div className="card-actions ">
                         <label
+                            onClick={() => setModalData(true)}
                             htmlFor="booking-modal"
                             className="btn btn-sm bg-pink-400 hover:bg-violet-600 text-black mt-5 mx-auto">Book Now</label>
                     </div>
@@ -46,19 +49,21 @@ const CategoryDetails = () => {
                     <h2 className='text-xl'>Seller Name: {secondBook.sellerName}</h2>
                     <p></p>
                     <div className="card-actions">
-                        <label htmlFor="booking-modal2" className="btn btn-sm bg-pink-400 hover:bg-violet-600 text-black mt-5 mx-auto border-0 rounded-0">Book Now</label>
+                        <label onClick={() => setModalData(true)} htmlFor="booking-modal2" className="btn btn-sm bg-pink-400 hover:bg-violet-600 text-black mt-5 mx-auto border-0 rounded-0">Book Now </label>
                     </div>
                 </div>
             </div>
-            {categoryDetails &&
+            {modalData &&
                 <BookingModal
                     user={user}
+                    setModalData={setModalData}
                     categoryDetails={categoryDetails}
                 ></BookingModal>
             }
-            {categoryDetails &&
+            {modalData &&
                 <BookingModal2
                     user={user}
+                    setModalData={setModalData}
                     categoryDetails={categoryDetails}
                 ></BookingModal2>
             }

@@ -1,9 +1,11 @@
 import DashboardLayout from "../../Layout/DashboardLayout";
+import AllUsers from "../../Pages/Dashboard/AllUsers/AllUsers";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import MyBookings from "../../Pages/Dashboard/MyBookings/MyBookings";
 import CategoryDetails from "../../Pages/Home/Catagories/CategoryDetails";
 import Home from "../../Pages/Home/Home/Home";
 import Signup from "../../Pages/Signup/Signup";
+import AdminRoute from "../AdminRoute/AdminROute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -39,11 +41,15 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        element: <DashboardLayout></DashboardLayout>,
         children: [
             {
                 path: '/dashboard',
                 element: <MyBookings></MyBookings>
+            },
+            {
+                path: '/dashboard/allUsers',
+                element: <AdminRoute> <AllUsers></AllUsers></AdminRoute>
             }
         ]
     }
