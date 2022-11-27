@@ -20,16 +20,16 @@ const Catagories = () => {
     }
 
     return (
-        <div className="my-20">
+        <div className="mt-10">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="sm:text-center">
-                    <h2 className="text-lg font-semibold leading-8 text-pink-600">Categories</h2>
-                    <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Our featured categories</p>
+                    <h2 className="text-lg font-semibold leading-8 text-black">Categories</h2>
+                    <p className="mt-2 text-3xl font-bold tracking-tight text-pink-400 sm:text-4xl">Our featured categories</p>
                     <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-gray-600">After becoming a member from here you can select a category. You can buy or resell your books here.
                     </p>
                 </div>
 
-                <div className="mt-20 max-w-lg sm:mx-auto md:max-w-none ">
+                <div className="mt-10 max-w-lg sm:mx-auto md:max-w-none ">
                     <div className="grid grid-cols-1 gap-y-16 md:grid-cols-3 md:gap-x-12 md:gap-y-16 ">
                         {categories?.map(category => (
                             <Category

@@ -24,7 +24,7 @@ const Footer = () => {
                 </div>
             </div>
             <div>
-                <p>Copyright © 2022 - All right reserved by ACME Industries Ltd</p>
+                <p>Copyright © 2022 - All right reserved by <span className='lg:text-lg text-xl text-pink-400 font-bold'>Lovin Book Store</span></p>
             </div>
         </footer>
     );

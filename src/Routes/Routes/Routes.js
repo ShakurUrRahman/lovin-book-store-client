@@ -1,4 +1,5 @@
 import DashboardLayout from "../../Layout/DashboardLayout";
+import Blog from "../../Pages/Blog/Blog";
 import AddProduct from "../../Pages/Dashboard/AddProduct/AddProduct";
 import AllBuyer from "../../Pages/Dashboard/AllBuyer/AllBuyer";
 import AllSeller from "../../Pages/Dashboard/AllSeller/AllSeller";
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
                 path: '/categoryDetails/:id',
                 loader: ({ params }) => fetch(`http://localhost:5000/categoryDetails/${params.id}`),
                 element: <CategoryDetails></CategoryDetails>
+            },
+            {
+                path: '/blog',
+                element: <Blog></Blog>
             }
 
         ]

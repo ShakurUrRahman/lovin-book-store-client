@@ -25,7 +25,9 @@ const Navbar = () => {
             :
             <div className='flex items-center'>
                 <button className='btn btn-sm px-8 border-0 rounded-0 bg-pink-400 hover:bg-violet-600'><Link to='/login'><span className='text-black'>Login</span></Link></button>
+
             </div>
+
         }
     </>
 
