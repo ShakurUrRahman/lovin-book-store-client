@@ -45,6 +45,19 @@ const MyProducts = () => {
             })
     }
 
+    const handleStatusUpdate = id => {
+        fetch(`http://localhost:5000/bookings/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'Application/json'
+            },
+            body: JSON.stringify({ status: 'Approved' })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
+    }
 
     if (isLoading) {
         <Loading></Loading>
@@ -88,7 +101,9 @@ const MyProducts = () => {
                                     </div>
                                 </td>
                                 <td>
-
+                                    <button onClick={() => handleStatusUpdate(product._id)} className='btn btn-sm btn-outline'>
+                                        {product.status ? product.status : 'unsold'}
+                                    </button>
                                 </td>
                                 <td>
                                     <button className='btn btn-sm btn-info'>Advertise</button>
