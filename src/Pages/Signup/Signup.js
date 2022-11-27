@@ -76,7 +76,7 @@ const Signup = () => {
     return (
         <div className='h-full flex justify-center items-center'>
             <div className='w-96 p-7'>
-                <h2 className='text-xl text-center'>Sign Up</h2>
+                <h2 className='text-3xl text-center text-pink-400 font-bold'>Sign Up</h2>
                 <form onSubmit={handleSubmit(handleSignup)}>
                     <div className="form-control w-full max-w-xs">
                         <label className="label"><span className="label-text">Name</span></label>
@@ -105,12 +105,12 @@ const Signup = () => {
                         <option value="Buyer">Buyer</option>
                         <option value="Seller">Seller</option>
                     </select>
-                    <input className='btn w-full mt-5' value='Sign Up' type="submit" disabled={loading} />
+                    <input className='btn w-full mt-5 bg-pink-400 hover:bg-violet-600 text-black' value='Sign Up' type="submit" disabled={loading} />
                     {signUpError && <p className='text-red-500'>{signUpError}</p>}
                 </form>
                 <p>Already have an account? <Link to='/login' className='text-green-500'>Please log in</Link></p>
                 <div className="divider">OR</div>
-                <button onClick={handleGoogleSignIn} className='btn btn-outline w-full'>Continue with Google<FaGoogle className='ml-2'></FaGoogle></button>
+                <button onClick={handleGoogleSignIn} className='btn w-full text-black px-8 border-0 rounded-0 bg-pink-400 hover:bg-violet-600'>Continue with Google<FaGoogle className='ml-2'></FaGoogle></button>
             </div>
         </div>
     );

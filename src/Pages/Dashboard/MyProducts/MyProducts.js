@@ -1,7 +1,16 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
+import toast from 'react-hot-toast';
+import ConfirmationModal from '../../Shared/ConfirmationModal/ConfirmationModal';
+import Loading from '../../Shared/Loading/Loading';
 
 const MyProducts = () => {
+    const [deletingProduct, setDeletingProduct] = useState(null);
+
+    const closeModal = () => {
+        setDeletingProduct(null);
+    }
+
 
     const { data: products, isLoading, refetch } = useQuery({
         queryKey: ['products'],
@@ -16,15 +25,35 @@ const MyProducts = () => {
                 return data;
             }
             catch (error) {
-
             }
         }
     });
 
+    const handleDeleteProduct = product => {
+        fetch(`http://localhost:5000/products/${product._id}`, {
+            method: 'DELETE',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    refetch();
+                    toast.success(`${product.productName} deleted successfully`)
+                }
+            })
+    }
+
+
+    if (isLoading) {
+        <Loading></Loading>
+    }
+
     return (
         <div>
             <div>
-                <h2 className='font-bold text-3xl text-pink-400 text-center my-5'>My Products: {products?.length}</h2>
+                <h2 className='font-bold text-3xl text-pink-400 text-center my-5'>My Books</h2>
             </div>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
@@ -40,7 +69,8 @@ const MyProducts = () => {
                     </thead>
                     <tbody>
                         {
-                            products?.map((product, i) => <tr>
+                            products?.map((product, i) => <tr
+                                key={product._id}>
                                 <th>
                                     {i + 1}
                                 </th>
@@ -64,15 +94,24 @@ const MyProducts = () => {
                                     <button className='btn btn-sm btn-info'>Advertise</button>
                                 </td>
                                 <td>
-                                    <button className='btn btn-sm btn-warning'>Delete</button>
-
+                                    <label onClick={() => { setDeletingProduct(product) }} htmlFor="confirmation-modal" className="btn btn-sm btn-error">Delete</label>
                                 </td>
-                            </tr>)
-                        }
-
+                            </tr>
+                            )}
                     </tbody>
                 </table>
             </div>
+            {
+                deletingProduct && <ConfirmationModal
+                    title={`Are you sure you want to delete?`}
+                    message={`If you delete ${deletingProduct.productName}. It can not be recover.`}
+                    successModal={handleDeleteProduct}
+                    successButtonName="Delete"
+                    modalData={deletingProduct}
+                    closeModal={closeModal}
+                >
+                </ConfirmationModal>
+            }
         </div>
     );
 };

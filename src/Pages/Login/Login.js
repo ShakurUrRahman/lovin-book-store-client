@@ -66,14 +66,14 @@ const Login = () => {
                         <label className="label"><span className="label-text">Forget Password?</span></label>
                         {errors.password && <p className='text-red-600'>{errors.password?.message}</p>}
                     </div>
-                    <input className='btn w-full' value='Login' type="submit" />
+                    <input className='btn w-full bg-pink-400 hover:bg-violet-600 text-black' value='Login' type="submit" />
                     {
                         loginError && <p className='text-red-500'>{loginError}</p>
                     }
                 </form>
                 <p>New to Assignment-12 <Link to='/signup' className='text-green-500'>Create new account</Link></p>
                 <div className="divider">OR</div>
-                <button onClick={handleGoogleSignIn} className='btn btn-outline w-full'>Continue with Google<FaGoogle className='ml-2'></FaGoogle></button>
+                <button onClick={handleGoogleSignIn} className='btn w-full text-black px-8 border-0 rounded-0 bg-pink-400 hover:bg-violet-600'>Continue with Google<FaGoogle className='ml-2'></FaGoogle></button>
             </div>
         </div>
     );
