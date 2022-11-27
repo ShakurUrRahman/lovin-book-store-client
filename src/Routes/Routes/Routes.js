@@ -1,8 +1,11 @@
 import DashboardLayout from "../../Layout/DashboardLayout";
 import AddProduct from "../../Pages/Dashboard/AddProduct/AddProduct";
+import AllBuyer from "../../Pages/Dashboard/AllBuyer/AllBuyer";
+import AllSeller from "../../Pages/Dashboard/AllSeller/AllSeller";
 import AllUsers from "../../Pages/Dashboard/AllUsers/AllUsers";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import MyBookings from "../../Pages/Dashboard/MyBookings/MyBookings";
+import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";
 import CategoryDetails from "../../Pages/Home/Catagories/CategoryDetails";
 import Home from "../../Pages/Home/Home/Home";
 import Signup from "../../Pages/Signup/Signup";
@@ -55,6 +58,18 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/addProduct',
                 element: <AddProduct></AddProduct>
+            },
+            {
+                path: '/dashboard/allBuyers',
+                element: <AllBuyer></AllBuyer>
+            },
+            {
+                path: '/dashboard/allSellers',
+                element: <AllSeller></AllSeller>
+            },
+            {
+                path: '/dashboard/myProducts',
+                element: <MyProducts></MyProducts>
             }
         ]
     }

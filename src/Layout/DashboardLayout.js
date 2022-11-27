@@ -21,8 +21,11 @@ const DashboardLayout = () => {
                         <li><Link to='/dashboard'>My Bookings</Link></li>
                         {
                             isAdmin && <>
-                                <li><Link to='/dashboard/allUsers'>All Users</Link></li>
+                                <li><Link to='/dashboard/allUsers'>All User</Link></li>
                                 <li><Link to='/dashboard/addProduct'>Add Product</Link></li>
+                                <li><Link to='/dashboard/allSellers'>All Seller</Link></li>
+                                <li><Link to='/dashboard/allBuyers'>All Buyer</Link></li>
+                                <li><Link to='/dashboard/myProducts'>All My Products</Link></li>
                             </>
                         }
                     </ul>
