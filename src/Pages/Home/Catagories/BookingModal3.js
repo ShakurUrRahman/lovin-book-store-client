@@ -55,7 +55,7 @@ const BookingModal3 = ({ product, user, setDataModal }) => {
                     <form onSubmit={handleBookingThree} className='grid grid-cols-1 gap-2 mt-5'>
                         <input name="name" type="text" value={user.user?.displayName} disabled className="input input-bordered w-full" />
                         <input name="email" type="text" value={user.user?.email} disabled className="input input-bordered w-full" />
-                        <input name="bookName" type="text" value={product.productName} disabled className="input input-bordered w-full" />
+                        <input name="bookName" type="text" value={product.bookName} disabled className="input input-bordered w-full" />
                         <input name="writerName" type="text" value={product.writerName} disabled className="input input-bordered w-full" />
                         <input name='resellPrice' type="text" value={product.resellPrice} disabled className="input input-bordered w-full" />
                         <input name='phoneNumber' type="text" placeholder="Phone Number" className="input input-bordered w-full" />
