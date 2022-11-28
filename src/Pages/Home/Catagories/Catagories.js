@@ -9,7 +9,7 @@ const Catagories = () => {
     const { data: categories = [], isLoading } = useQuery({
         queryKey: ['home'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/')
+            const res = await fetch('https://lovin-book-store-server.vercel.app/')
             const data = await res.json();
             return data;
         }

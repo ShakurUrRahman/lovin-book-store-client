@@ -59,7 +59,7 @@ const Signup = () => {
 
     const saveBuyer = (name, email, role) => {
         const buyer = { name, email, role }
-        fetch('http://localhost:5000/buyers', {
+        fetch('https://lovin-book-store-server.vercel.app/buyers', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

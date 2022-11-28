@@ -7,7 +7,7 @@ const AllUsers = () => {
     const { data: buyers = [], refetch } = useQuery({
         queryKey: ['buyers'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/buyers');
+            const res = await fetch('https://lovin-book-store-server.vercel.app/buyers');
             const data = await res.json();
             return data;
         }
@@ -15,7 +15,7 @@ const AllUsers = () => {
 
     const handleMakeAdmin = id => {
         console.log(id);
-        fetch(`http://localhost:5000/buyers/admin/${id}`, {
+        fetch(`https://lovin-book-store-server.vercel.app/buyers/admin/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: (`bearer ${localStorage.getItem('accessToken')}`)

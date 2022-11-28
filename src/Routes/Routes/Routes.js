@@ -12,6 +12,7 @@ import Home from "../../Pages/Home/Home/Home";
 import DisplayError from "../../Pages/Shared/DisplayError/DisplayError";
 import Signup from "../../Pages/Signup/Signup";
 import AdminRoute from "../AdminRoute/AdminRoute";
+import SellerRoute from "../SellerRoute/SellerRoute";
 
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -38,7 +39,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/categoryDetails/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/categoryDetails/${params.id}`),
+                loader: ({ params }) => fetch(`https://lovin-book-store-server.vercel.app/categoryDetails/${params.id}`),
                 element: <CategoryDetails></CategoryDetails>
             },
             {
@@ -62,24 +63,24 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/addProduct',
-                element: <AddProduct></AddProduct>
+                element: <AdminRoute><SellerRoute><AddProduct></AddProduct></SellerRoute></AdminRoute>
             },
             {
                 path: '/dashboard/allBuyers',
-                element: <AllBuyer></AllBuyer>
+                element: <AdminRoute><SellerRoute><AllBuyer></AllBuyer></SellerRoute></AdminRoute>
             },
             {
                 path: '/dashboard/allSellers',
-                element: <AllSeller></AllSeller>
+                element: <AdminRoute><AllSeller></AllSeller></AdminRoute>
             },
             {
                 path: '/dashboard/myProducts',
-                element: <MyProducts></MyProducts>
+                element: <SellerRoute><MyProducts></MyProducts></SellerRoute>
             },
             {
                 path: '/dashboard/payment/:id',
-                element: <AdminRoute><Payment></Payment></AdminRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/bookings/${params.id}`)
+                element: <Payment></Payment>,
+                loader: ({ params }) => fetch(`https://lovin-book-store-server.vercel.app/bookings/${params.id}`)
             }
         ]
     }

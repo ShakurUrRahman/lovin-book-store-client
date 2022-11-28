@@ -2,23 +2,26 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
+import Loading from '../../Shared/Loading/Loading';
 import BookingModal from './BookingModal';
 import BookingModal2 from './BookingModal2';
+import BookingModal3 from './BookingModal3';
 
 const CategoryDetails = () => {
     const categoryDetails = useLoaderData();
     const user = useContext(AuthContext);
     const [modalData, setModalData] = useState(null);
+    const [dataModal, setDataModal] = useState(null);
 
     console.log(categoryDetails);
     const { firstBook, secondBook } = categoryDetails;
 
 
-    const { data: products, isLoading, refetch } = useQuery({
+    const { data: products, isLoading } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
             try {
-                const res = await fetch('http://localhost:5000/products', {
+                const res = await fetch('https://lovin-book-store-server.vercel.app/products', {
                     headers: {
                         authorization: `bearer ${localStorage.getItem('accessToken')}`
                     }
@@ -30,6 +33,10 @@ const CategoryDetails = () => {
             }
         }
     });
+
+    if (isLoading) {
+        return <Loading></Loading>
+    }
 
     return (
         <div className='grid grid-cols-1 gap-y-16 lg:grid-cols-2 
@@ -71,44 +78,56 @@ const CategoryDetails = () => {
                         <label onClick={() => setModalData(true)} htmlFor="booking-modal2" className="btn btn-sm bg-pink-400 hover:bg-violet-600 text-black mt-5 mx-auto border-0 rounded-0">Book Now </label>
                     </div>
                 </div>
+
             </div>
-            <div>
-                {
-                    products.map(product => <div key={product._id} className="card w-96 bg-base-100 shadow-xl">
-                        <figure className="px-5 pt-10">
-                            <img src={product.productName} alt="Shoes" className="rounded-xl w-72 h-80" />
-                        </figure>
-                        <div className="card-body  ">
-                            <h2 className="card-title">{secondBook.name}</h2>
-                            <p>by <span className='font-bold'>{secondBook.writer}</span></p>
-                            <p>Location: {secondBook.location}</p>
-                            <p><small>Present Price: {secondBook.resellPrice}TK</small></p>
-                            <p><small>Original Price: {secondBook.originalPrice}TK</small></p>
-                            <p>Using Period: {secondBook.usesTime}</p>
-                            <h2 className='text-xl'>Seller Name: {secondBook.sellerName}</h2>
-                            <p></p>
-                            <div className="card-actions">
-                                <label onClick={() => setModalData(true)} htmlFor="booking-modal2" className="btn btn-sm bg-pink-400 hover:bg-violet-600 text-black mt-5 mx-auto border-0 rounded-0">Book Now </label>
-                            </div>
+
+            {
+                products.map(product => <div key={product._id} className="card w-96 bg-base-100 shadow-xl my-10">
+                    <figure className="px-5 pt-10">
+                        <img src={product.image} alt="Shoes" className="rounded-xl w-72 h-80" />
+                    </figure>
+                    <div className="card-body  ">
+                        <h2 className="card-title">{product.productName}</h2>
+                        <p>by <span className='font-bold'>{product.writer}</span></p>
+                        <p>Location: {secondBook.location}</p>
+                        <p><small>Present Price: {secondBook.resellPrice}TK</small></p>
+                        <p><small>Original Price: {secondBook.originalPrice}TK</small></p>
+                        <p>Using Period: {secondBook.usesTime}</p>
+                        <h2 className='text-xl'>Seller Name: {secondBook.sellerName}</h2>
+                        <p></p>
+                        <div className="card-actions">
+                            <label onClick={() => setDataModal(true)} htmlFor="booking-modal2" className="btn btn-sm bg-pink-400 hover:bg-violet-600 text-black mt-5 mx-auto border-0 rounded-0">Book Now </label>
                         </div>
-                    </div>)
-                }
-            </div>
-            {modalData &&
+                    </div>
+                    {
+                        dataModal &&
+                        <BookingModal3
+                            user={user}
+                            setDataModal={setDataModal}
+                            product={product}
+                        ></BookingModal3>
+
+                    }
+                </div>)
+            }
+            {
+                modalData &&
                 <BookingModal
                     user={user}
                     setModalData={setModalData}
                     categoryDetails={categoryDetails}
                 ></BookingModal>
             }
-            {modalData &&
+            {
+                modalData &&
                 <BookingModal2
                     user={user}
                     setModalData={setModalData}
                     categoryDetails={categoryDetails}
                 ></BookingModal2>
             }
-        </div>
+
+        </div >
     );
 };
 

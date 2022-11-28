@@ -14,14 +14,14 @@ const AllSeller = () => {
     const { data: sellers = [], isLoading, refetch } = useQuery({
         queryKey: ['sellers'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/sellers');
+            const res = await fetch('https://lovin-book-store-server.vercel.app/sellers');
             const data = await res.json();
             return data;
         }
     })
 
     const handleDeleteBuyer = seller => {
-        fetch(`http://localhost:5000/sellers/${seller._id}`, {
+        fetch(`https://lovin-book-store-server.vercel.app/sellers/${seller._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
