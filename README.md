@@ -29,7 +29,7 @@ Daisy UI -> [DaisyUI](https://daisyui.com/)
 
 GitHub -> [GitHub](https://githum.com/)
 
-adminEmail: examiner@bother.com
+adminEmail: examiner@brother.com
 
 adminPassword: Qq!1234
 
