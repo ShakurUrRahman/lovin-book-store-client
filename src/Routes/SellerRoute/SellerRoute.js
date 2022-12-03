@@ -10,12 +10,12 @@ const SellerRoute = ({ children }) => {
     const [isSeller, isSellerLoading] = useSeller(user?.email);
     const [isAdmin, isAdminLoading] = useAdmin(user?.email);
     const location = useLocation();
-
+    console.log(isSeller, isAdmin);
     if (loading || isSellerLoading) {
         return <Loading></Loading>
     }
 
-    if ((user && isSeller) || (user && isAdmin)) {
+    if (user && (isSeller || isAdmin)) {
         return children;
     }
     return <Navigate to='/login' state={{ from: location }} replace></Navigate>
